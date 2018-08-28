@@ -1,0 +1,69 @@
+<ion-content parallax-header>
+  <ion-fab right bottom (click)="openReviewModal()">
+    <button ion-fab color="danger">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <div class="header-image" [ngStyle]="{'background-image' : imgSrc,height : imgHeight}">
+
+    <ion-navbar transparent no-border>
+    </ion-navbar>
+  </div>
+
+  <div class="main-content">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10>
+          <div class="movie-details">
+            <span style="color:red;font-weight:      bold;">MOVIE</span> 2015
+          </div>
+          <h2>{{film.name}}</h2>
+          <div class="movie-details">
+            <span>Genre Name</span> - Running Time - Release Date</div>
+        </ion-col>
+        <ion-col col-2>
+          <div class="rating">8.2</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h3 text-center>Synopsis</h3>
+    <p>{{film.synopsis}}</p>
+    <h3 text-center>Cast and Crew</h3>
+
+
+    <ion-scroll scrollX="true" direction="x" style="white-space: nowrap; height:150px">
+      <ion-col col-3 style="display: inline-block;" *ngFor="let team of film.castAndCrew">
+        <div style="text-align: center">
+          <img style="display: block;margin: 0 auto;" src="https://placehold.it/100x100" style="border-radius: 50%;" alt="">
+          <p>{{team.name}}</p>
+        </div>
+      </ion-col>
+    </ion-scroll>
+    <h3 text-center>Review</h3>
+    <ion-grid>
+      <ion-row *ngFor="let review of film.reviews">
+        <ion-col col-12>
+          <p>{{review.message}}</p>
+        </ion-col>
+        <ion-row>
+          <!-- <ion-col col-3>
+                <img src="http://placehold.it/50x50" alt="" style="border-radius: 50%;">
+              </ion-col> -->
+          <!-- <ion-col col-12>
+                <h6 style="margin-top: 11px;">by - {{review.name}}</h6>
+              </ion-col> -->
+          <ion-col col-12>
+            <ion-icon name="star" *ngFor="let star of getRattingArray(review.rating)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+      <hr style="width: 60%;border: 1px dotted white;">
+    </ion-grid>
+    
+
+  </div>
+
+</ion-content>
+
+<!-- style="background-image: url('http://placehold.it/300x800'); height : 40vh"> -->
